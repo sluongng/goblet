@@ -93,7 +93,7 @@ func (h *gitProtocolHTTPErrorReporter) reportError(ctx context.Context, startTim
 		ctx,
 		[]tag.Mutator{tag.Insert(CommandCanonicalStatusKey, code.String())},
 		InboundCommandCount.M(1),
-		InboundCommandProcessingTime.M(int64(time.Now().Sub(startTime)/time.Millisecond)),
+		InboundCommandProcessingTime.M(int64(time.Since(startTime)/time.Millisecond)),
 	)
 
 	if err != nil {

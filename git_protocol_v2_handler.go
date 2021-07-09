@@ -130,7 +130,7 @@ func handleV2Command(ctx context.Context, reporter gitProtocolErrorReporter, rep
 					timer.Reset(checkFrequency)
 				}
 			}
-			stats.Record(ctx, UpstreamFetchWaitingTime.M(int64(time.Now().Sub(fetchStartTime)/time.Millisecond)))
+			stats.Record(ctx, UpstreamFetchWaitingTime.M(int64(time.Since(fetchStartTime)/time.Millisecond)))
 		}
 
 		if err := repo.serveFetchLocal(command, w); err != nil {

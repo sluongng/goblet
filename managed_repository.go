@@ -115,7 +115,7 @@ func logStats(command string, startTime time.Time, err error) {
 			tag.Insert(CommandCanonicalStatusKey, code.String()),
 		},
 		OutboundCommandCount.M(1),
-		OutboundCommandProcessingTime.M(int64(time.Now().Sub(startTime)/time.Millisecond)),
+		OutboundCommandProcessingTime.M(int64(time.Since(startTime)/time.Millisecond)),
 	)
 }
 
